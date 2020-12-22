@@ -16,6 +16,16 @@ const theme = deepMerge(grommet, {
       up: undefined,
     },
   },
+  avatar: {
+    extend: `border: 2px solid white;
+    box-shadow: 2px 2px 15px 1px white;`,
+  },
+  // card: {
+  //   footer: {
+  //     pad: { horizontal: "medium", vertical: "small" },
+  //     background: "#FFFFFF27",
+  //   },
+  // },
 });
 
 export default theme;
