@@ -5,6 +5,15 @@ import { FormUp, FormDown, Menu } from "grommet-icons";
 
 const theme = deepMerge(grommet, {
   global: {
+    focus: {
+      outline: {
+        color: "#fcf8e8",
+      },
+    },
+    colors: {
+      brand: "#c5a880",
+      "accent-1": "#fcf8e8",
+    },
     font: {
       family: "Roboto",
       size: "18px",
@@ -17,15 +26,16 @@ const theme = deepMerge(grommet, {
     },
   },
   avatar: {
-    extend: `border: 2px solid white;
-    box-shadow: 2px 2px 15px 1px white;`,
+    extend: `
+      border: 1px solid #c5a880;
+      box-shadow: 1px 1px 10px 1px #c5a880;
+    `,
   },
-  // card: {
-  //   footer: {
-  //     pad: { horizontal: "medium", vertical: "small" },
-  //     background: "#FFFFFF27",
-  //   },
-  // },
+  card: {
+    footer: {
+      background: "#FFFFFF27",
+    },
+  },
 });
 
 export default theme;

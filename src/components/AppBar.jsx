@@ -1,60 +1,59 @@
 import React from "react";
 import { Box, Header, Nav, Menu, Text } from "grommet";
-import { useHistory } from "react-router-dom";
-import AnchorLink from "./AnchorLink";
 import { Menu as MenuIcon } from "grommet-icons";
+
+import { useHistory } from "react-router-dom";
+import { usePage, usePageUpdate } from "../contexts/PageContext";
+import pages from "../constants/pages";
+import SocialLink from "../components/SocialLink";
 
 export default function AppBar(props) {
   const { size } = props;
   const history = useHistory();
+  const page = usePage();
+  const setPage = usePageUpdate();
+
+  const changePage = (moveTo) => {
+    setPage(moveTo);
+    history.push(moveTo);
+  };
+  console.log("appbar page", page);
+
   return (
     <Header pad="medium">
-      <Box direction="row" align="center" gap="small"></Box>
+      <Box direction="row" align="center" gap="small">
+        {page !== "/" && <SocialLink />}
+      </Box>
       {size === "small" ? (
         <Menu
-          // label={<Text>Menu</Text>}
           icon={<MenuIcon color="light-1" />}
-          items={[
-            {
-              label: "Home",
+          items={pages.map((page) => {
+            return {
+              label: page.label,
               onClick: () => {
-                history.push("/");
+                changePage(page.path);
               },
-            },
-            {
-              label: "Timeline",
-              onClick: () => {
-                history.push("/timeline");
-              },
-            },
-            {
-              label: "Projects",
-              onClick: () => {
-                history.push("/projects");
-              },
-            },
-            {
-              label: "Technologies",
-              onClick: () => {
-                history.push("/technologies");
-              },
-            },
-          ]}
+            };
+          })}
         />
       ) : (
         <Nav direction="row">
-          <AnchorLink to="/" color="light-1" weight="200">
-            Home
-          </AnchorLink>
-          <AnchorLink to="/timeline" color="light-1" weight="200">
-            Timeline
-          </AnchorLink>
-          <AnchorLink to="/projects" color="light-1" weight="200">
-            Projects
-          </AnchorLink>
-          <AnchorLink to="/technologies" color="light-1" weight="200">
-            Technologies
-          </AnchorLink>
+          {pages.map((route, index) => (
+            <Box
+              key={index}
+              round={{ size: "xsmall" }}
+              hoverIndicator
+              elevation="small"
+              pad="xsmall"
+              background={page === route.path ? "dark-3" : "none"}
+              onClick={() => changePage(route.path)}
+              style={{ cursor: "pointer" }}
+            >
+              <Text color="light-1" weight="400">
+                {route.label}
+              </Text>
+            </Box>
+          ))}
         </Nav>
       )}
     </Header>
