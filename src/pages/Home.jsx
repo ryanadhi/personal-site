@@ -11,7 +11,7 @@ import {
 } from "grommet";
 import photo from "../assets/photo.jpg";
 import bio from "../constants/bio";
-import { usePage, usePageUpdate } from "../contexts/PageContext";
+import { usePage, usePageUpdate } from "../App";
 import SocialLink from "../components/SocialLink";
 
 export default function Home() {
