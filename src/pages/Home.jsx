@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Avatar,
   Box,
@@ -17,6 +17,10 @@ import SocialLink from "../components/SocialLink";
 export default function Home() {
   const page = usePage();
   const setPage = usePageUpdate();
+
+  useEffect(() => {
+    setPage("/");
+  }, []);
 
   return (
     <ResponsiveContext.Consumer>

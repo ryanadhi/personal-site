@@ -6,22 +6,22 @@ const routes = [
     exact: true,
     isPrivate: false,
   },
-  {
-    path: "/technologies",
-    component: lazy(() =>
-      import(/* webpackPrefetch: true */ "../pages/Technologies")
-    ),
-    exact: true,
-    isPrivate: false,
-  },
-  {
-    path: "/projects",
-    component: lazy(() =>
-      import(/* webpackPrefetch: true */ "../pages/Projects")
-    ),
-    exact: true,
-    isPrivate: false,
-  },
+  // {
+  //   path: "/technologies",
+  //   component: lazy(() =>
+  //     import(/* webpackPrefetch: true */ "../pages/Technologies")
+  //   ),
+  //   exact: true,
+  //   isPrivate: false,
+  // },
+  // {
+  //   path: "/projects",
+  //   component: lazy(() =>
+  //     import(/* webpackPrefetch: true */ "../pages/Projects")
+  //   ),
+  //   exact: true,
+  //   isPrivate: false,
+  // },
   {
     path: "/timeline",
     component: lazy(() =>

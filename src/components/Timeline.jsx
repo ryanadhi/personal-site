@@ -4,104 +4,83 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
+import { Box, Text, Heading, Anchor } from "grommet";
 
-import { Download, Shop } from "grommet-icons";
+import { GiGraduateCap } from "react-icons/gi";
+import { FaRegDotCircle } from "react-icons/fa";
+import { MdWork } from "react-icons/md";
+import timeline from "../constants/timeline";
+import moment from "moment";
 
 export default function TimelineComponent(props) {
+  console.log(props.size);
   return (
-    <VerticalTimeline>
-      <VerticalTimelineElement
-        className="vertical-timeline-element--work"
-        contentStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-        contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
-        date="2011 - present"
-        iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-        icon={<Download />}
-      >
-        <h3 className="vertical-timeline-element-title">Creative Director</h3>
-        <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
-        <p>
-          Creative Direction, User Experience, Visual Design, Project
-          Management, Team Leading
-        </p>
-      </VerticalTimelineElement>
-      <VerticalTimelineElement
-        className="vertical-timeline-element--work"
-        date="2010 - 2011"
-        iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-        icon={<Download />}
-      >
-        <h3 className="vertical-timeline-element-title">Art Director</h3>
-        <h4 className="vertical-timeline-element-subtitle">
-          San Francisco, CA
-        </h4>
-        <p>
-          Creative Direction, User Experience, Visual Design, SEO, Online
-          Marketing
-        </p>
-      </VerticalTimelineElement>
-      <VerticalTimelineElement
-        className="vertical-timeline-element--work"
-        date="2008 - 2010"
-        iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-        icon={<Download />}
-      >
-        <h3 className="vertical-timeline-element-title">Web Designer</h3>
-        <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
-        <p>User Experience, Visual Design</p>
-      </VerticalTimelineElement>
-      <VerticalTimelineElement
-        className="vertical-timeline-element--work"
-        date="2006 - 2008"
-        iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-        icon={<Download />}
-      >
-        <h3 className="vertical-timeline-element-title">Web Designer</h3>
-        <h4 className="vertical-timeline-element-subtitle">
-          San Francisco, CA
-        </h4>
-        <p>User Experience, Visual Design</p>
-      </VerticalTimelineElement>
-      <VerticalTimelineElement
-        className="vertical-timeline-element--education"
-        date="April 2013"
-        iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
-        icon={<Shop />}
-      >
-        <h3 className="vertical-timeline-element-title">
-          Content Marketing for Web, Mobile and Social Media
-        </h3>
-        <h4 className="vertical-timeline-element-subtitle">Online Course</h4>
-        <p>Strategy, Social Media</p>
-      </VerticalTimelineElement>
-      <VerticalTimelineElement
-        className="vertical-timeline-element--education"
-        date="November 2012"
-        iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
-        icon={<Shop />}
-      >
-        <h3 className="vertical-timeline-element-title">
-          Agile Development Scrum Master
-        </h3>
-        <h4 className="vertical-timeline-element-subtitle">Certification</h4>
-        <p>Creative Direction, User Experience, Visual Design</p>
-      </VerticalTimelineElement>
-      <VerticalTimelineElement
-        className="vertical-timeline-element--education"
-        date="2002 - 2006"
-        iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
-        icon={<Shop />}
-      >
-        <h3 className="vertical-timeline-element-title">
-          Bachelor of Science in Interactive Digital Media Visual Imaging
-        </h3>
-        <h4 className="vertical-timeline-element-subtitle">Bachelor Degree</h4>
-        <p>Creative Direction, Visual Design</p>
-      </VerticalTimelineElement>
-      <VerticalTimelineElement
-        iconStyle={{ background: "rgb(16, 204, 82)", color: "#fff" }}
-        icon={<Shop />}
-      />
-    </VerticalTimeline>
+    <>
+      <Heading level="2" color="light-3">
+        Work experience & Education
+      </Heading>
+      <VerticalTimeline>
+        {timeline.map((step, index) => (
+          <VerticalTimelineElement
+            key={index}
+            className="vertical-timeline-element--work"
+            contentStyle={{
+              background: index === 0 ? "#c5a880" : "#333333",
+              color: "#F2F2F2",
+            }}
+            contentArrowStyle={{
+              borderRight:
+                index === 0 ? "7px solid #c5a880" : "7px solid #333333",
+            }}
+            date={
+              index === 0
+                ? `${moment(step.from).format("MMM YYYY")} - present`
+                : `${moment(step.from).format("MMM YYYY")} - ${moment(
+                    step.to
+                  ).format("MMM YYYY")}`
+            }
+            iconStyle={{ background: "#777777", color: "#fff" }}
+            icon={
+              index === timeline.length - 1 ? <GiGraduateCap /> : <MdWork />
+            }
+          >
+            <Box>
+              <Text
+                color={index === 0 ? "dark-1" : "light-3"}
+                size="large"
+                weight="500"
+                style={{ letterSpacing: "0.05em" }}
+              >
+                {step.position}
+              </Text>
+              <Anchor
+                href={step.url}
+                target="_blank"
+                style={{
+                  padding: "0",
+                  fontWeight: "normal",
+                  textDecoration: "underline",
+                  textDecorationColor: index === 0 ? "#333333" : "#EDEDED",
+                }}
+                margin={{ bottom: "medium" }}
+              >
+                <Text color={index === 0 ? "dark-1" : "light-3"}>
+                  {step.company}
+                </Text>
+              </Anchor>
+              <Text color={index === 0 ? "dark-1" : "light-3"} size="small">
+                {step.stacks.map((stack, index) =>
+                  index === step.stacks.length - 1 ? `${stack} ` : `${stack} | `
+                )}
+              </Text>
+            </Box>
+          </VerticalTimelineElement>
+        ))}
+        <VerticalTimelineElement
+          iconStyle={{ background: "#c5a880", color: "#fff" }}
+          icon={<FaRegDotCircle />}
+        />
+      </VerticalTimeline>
+    </>
   );
 }

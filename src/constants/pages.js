@@ -7,14 +7,14 @@ const pages = [
     label: "Timeline",
     path: "/timeline",
   },
-  {
-    label: "Projects",
-    path: "/projects",
-  },
-  {
-    label: "Technologies",
-    path: "/technologies",
-  },
+  // {
+  //   label: "Projects",
+  //   path: "/projects",
+  // },
+  // {
+  //   label: "Technologies",
+  //   path: "/technologies",
+  // },
 ];
 
 export default pages;

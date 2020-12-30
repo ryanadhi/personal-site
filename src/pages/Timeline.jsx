@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Avatar,
   Box,
@@ -14,16 +14,24 @@ import {
   Stack,
 } from "grommet";
 
+import { usePage, usePageUpdate } from "../App";
+
 import TimelineComponent from "../components/Timeline";
 
 import timeline from "../constants/timeline";
 
 export default function Timeline(props) {
+  const page = usePage();
+  const setPage = usePageUpdate();
+
+  useEffect(() => {
+    setPage("/timeline");
+  }, []);
   return (
     <ResponsiveContext.Consumer>
       {(size) => (
         <Box fill justify="center" align="center">
-          <h1>Timeline</h1>
+          <TimelineComponent size={size} />
         </Box>
       )}
     </ResponsiveContext.Consumer>
