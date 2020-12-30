@@ -18,7 +18,7 @@ export default function SocialLink() {
         icon={<Github />}
         target="_blank"
         style={{ padding: "0" }}
-        onClick={() => eventTracker("GitHub", bio.github)}
+        onClick={() => tracker("GitHub", bio.github)}
         rel="noopener noreferrer"
       />
       <Anchor
@@ -26,7 +26,7 @@ export default function SocialLink() {
         icon={<Linkedin style={{ width: "20px", height: "20px" }} />}
         target="_blank"
         style={{ padding: "0" }}
-        onClick={() => eventTracker("Linkedin", bio.linkedin)}
+        onClick={() => tracker("Linkedin", bio.linkedin)}
         rel="noopener noreferrer"
       />
       <Anchor
@@ -34,7 +34,7 @@ export default function SocialLink() {
         icon={<Mail />}
         target="_blank"
         style={{ padding: "0" }}
-        onClick={() => eventTracker("Email", bio.email)}
+        onClick={() => tracker("Email", bio.email)}
         rel="noopener noreferrer"
       />
       <Anchor
@@ -42,7 +42,7 @@ export default function SocialLink() {
         icon={<DocumentText style={{ width: "20px", height: "20px" }} />}
         target="_blank"
         style={{ padding: "0" }}
-        onClick={() => eventTracker("Resume", bio.github)}
+        onClick={() => tracker("Resume", bio.github)}
         rel="noopener noreferrer"
       />
     </Box>
