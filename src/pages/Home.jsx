@@ -9,12 +9,17 @@ import {
   ResponsiveContext,
   Heading,
 } from "grommet";
+import ReactGA from "react-ga";
+import { withRouter } from "react-router-dom";
 import photo from "../assets/photo.jpg";
 import bio from "../constants/bio";
 import { usePage, usePageUpdate } from "../App";
 import SocialLink from "../components/SocialLink";
+import config from "../configs/env.config";
 
-export default function Home() {
+ReactGA.initialize(config.google.trackingCode);
+
+function Home() {
   const page = usePage();
   const setPage = usePageUpdate();
 
@@ -22,6 +27,9 @@ export default function Home() {
     setPage("/");
   }, []);
 
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
   return (
     <ResponsiveContext.Consumer>
       {(size) => (
@@ -78,3 +86,5 @@ export default function Home() {
     </ResponsiveContext.Consumer>
   );
 }
+
+export default withRouter(Home);

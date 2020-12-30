@@ -59,8 +59,6 @@ export default function TimelineComponent(props) {
                 style={{
                   padding: "0",
                   fontWeight: "normal",
-                  // textDecoration: "underline",
-                  // textDecorationColor: index === 0 ? "#333333" : "#EDEDED",
                 }}
                 margin={{ bottom: "medium" }}
               >
