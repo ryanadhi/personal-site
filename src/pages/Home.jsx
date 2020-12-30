@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import {
   Avatar,
@@ -13,14 +14,13 @@ import ReactGA from "react-ga";
 import { withRouter } from "react-router-dom";
 import photo from "../assets/photo.jpg";
 import bio from "../constants/bio";
-import { usePage, usePageUpdate } from "../App";
+import { usePageUpdate } from "../App";
 import SocialLink from "../components/SocialLink";
 import config from "../configs/env.config";
 
 ReactGA.initialize(config.google.trackingCode);
 
 function Home() {
-  const page = usePage();
   const setPage = usePageUpdate();
 
   useEffect(() => {
