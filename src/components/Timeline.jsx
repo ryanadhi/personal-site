@@ -46,8 +46,7 @@ export default function TimelineComponent(props) {
               <Text
                 color={index === 0 ? "dark-1" : "light-3"}
                 size="large"
-                weight="500"
-                style={{ letterSpacing: "0.05em" }}
+                style={{ letterSpacing: "0.05em", fontWeight: "500" }}
               >
                 {step.position}
               </Text>
