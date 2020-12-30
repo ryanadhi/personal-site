@@ -1,9 +1,9 @@
-import React, { Suspense, useEffect, useState, useContext } from "react";
+import React, { Suspense, useState, useContext } from "react";
 import ReactGA from "react-ga";
 import "./App.css";
-import { Grommet, Box, Text, ResponsiveContext, Heading } from "grommet";
+import { Grommet, Box, ResponsiveContext } from "grommet";
 import AppBar from "./components/AppBar";
-import { Switch, Route, Redirect, useHistory } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import routes from "./constants/routes";
 import theme from "./theme";
 import config from "./configs/env.config";
