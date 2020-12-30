@@ -3,7 +3,7 @@ import { Box, Header, Nav, Menu, Text } from "grommet";
 import { Menu as MenuIcon } from "grommet-icons";
 
 import { useHistory } from "react-router-dom";
-import { usePage, usePageUpdate } from "../App";
+import { usePage, usePageUpdate } from "../contexts/PageContext";
 import pages from "../constants/pages";
 import SocialLink from "../components/SocialLink";
 
@@ -17,7 +17,6 @@ export default function AppBar(props) {
     setPage(moveTo);
     history.push(moveTo);
   };
-  console.log("appbar page", page);
 
   return (
     <Header pad="medium">

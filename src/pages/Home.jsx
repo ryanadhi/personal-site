@@ -14,11 +14,8 @@ import ReactGA from "react-ga";
 import { withRouter } from "react-router-dom";
 import photo from "../assets/photo.jpg";
 import bio from "../constants/bio";
-import { usePageUpdate } from "../App";
+import { usePageUpdate } from "../contexts/PageContext";
 import SocialLink from "../components/SocialLink";
-import config from "../configs/env.config";
-
-ReactGA.initialize(config.google.trackingCode);
 
 function Home() {
   const setPage = usePageUpdate();
@@ -44,7 +41,7 @@ function Home() {
             round={{ size: "medium" }}
             justify="center"
             align="center"
-            width={size === "small" ? "medium" : "large"}
+            width={size === "small" ? "90%" : "large"}
             style={{ position: "relative" }}
             overflow="visible"
           >
@@ -66,11 +63,23 @@ function Home() {
                 align="center"
                 fill="horizontal"
               >
-                <Text color="accent-1">{bio.greeting}</Text>
-                <Heading level="2" style={{ letterSpacing: ".2em" }}>
+                <Text
+                  color="accent-1"
+                  size={size === "small" ? "small" : "medium"}
+                >
+                  {bio.greeting}
+                </Text>
+                <Heading
+                  level={size === "small" ? "3" : "2"}
+                  style={{ letterSpacing: ".2em" }}
+                >
                   {bio.name.toUpperCase()}
                 </Heading>
-                <Text style={{ textAlign: "justify" }} color="accent-1">
+                <Text
+                  style={{ textAlign: "justify" }}
+                  color="accent-1"
+                  size={size === "small" ? "small" : "medium"}
+                >
                   {bio.about}
                 </Text>
               </Box>
