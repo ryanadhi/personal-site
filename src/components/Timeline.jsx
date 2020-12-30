@@ -7,13 +7,11 @@ import "react-vertical-timeline-component/style.min.css";
 import { Box, Text, Heading, Anchor } from "grommet";
 
 import { GiGraduateCap } from "react-icons/gi";
-import { FaRegDotCircle } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
 import timeline from "../constants/timeline";
 import moment from "moment";
 
 export default function TimelineComponent(props) {
-  console.log(props.size);
   return (
     <>
       <Heading level="2" color="light-3">
@@ -48,8 +46,7 @@ export default function TimelineComponent(props) {
               <Text
                 color={index === 0 ? "dark-1" : "light-3"}
                 size="large"
-                weight="500"
-                style={{ letterSpacing: "0.05em" }}
+                style={{ letterSpacing: "0.05em", fontWeight: "500" }}
               >
                 {step.position}
               </Text>
@@ -80,10 +77,6 @@ export default function TimelineComponent(props) {
             </Box>
           </VerticalTimelineElement>
         ))}
-        <VerticalTimelineElement
-          iconStyle={{ background: "#c5a880", color: "#fff" }}
-          icon={<FaRegDotCircle />}
-        />
       </VerticalTimeline>
     </>
   );
