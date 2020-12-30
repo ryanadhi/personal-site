@@ -16,21 +16,11 @@ import photo from "../assets/photo.jpg";
 import bio from "../constants/bio";
 import { usePageUpdate } from "../contexts/PageContext";
 import SocialLink from "../components/SocialLink";
+import isMobileLandscape from "../helpers/isMobileLandscape";
 
 function Home() {
   const setPage = usePageUpdate();
   const [isLandscape, setIsLandscape] = useState(isMobileLandscape());
-
-  function isMobileLandscape() {
-    if (
-      /Mobi/i.test(window.navigator.userAgent) &&
-      window.matchMedia("(orientation: landscape)").matches
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 
   useEffect(() => {
     setPage("/");
