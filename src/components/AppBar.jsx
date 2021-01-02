@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from "react";
 import { Box, Header, Nav, Menu, Text } from "grommet";
 import { Menu as MenuIcon } from "grommet-icons";
 
@@ -7,8 +8,11 @@ import { usePage, usePageUpdate } from "../contexts/PageContext";
 import pages from "../constants/pages";
 import SocialLink from "../components/SocialLink";
 import useEventTracker from "../hooks/useEventTracker";
+import isMobileLandscape from "../helpers/isMobileLandscape";
 
 export default function AppBar(props) {
+  const [isLandscape, setIsLandscape] = useState(isMobileLandscape());
+
   const { size } = props;
   const history = useHistory();
   const page = usePage();
@@ -21,8 +25,15 @@ export default function AppBar(props) {
     history.push(moveTo);
   };
 
+  useEffect(() => {
+    setIsLandscape(isMobileLandscape());
+  }, [
+    window.matchMedia("(orientation: landscape)"),
+    window.navigator.userAgent,
+  ]);
+
   return (
-    <Header pad="medium">
+    <Header pad={isLandscape ? "small" : "medium"}>
       <Box direction="row" align="center" gap="small">
         {page !== "/" && <SocialLink />}
       </Box>
