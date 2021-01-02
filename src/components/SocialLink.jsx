@@ -42,7 +42,7 @@ export default function SocialLink() {
         icon={<DocumentText style={{ width: "20px", height: "20px" }} />}
         target="_blank"
         style={{ padding: "0" }}
-        onClick={() => tracker("Resume", bio.github)}
+        onClick={() => tracker("Resume", bio.resume)}
         rel="noopener noreferrer"
       />
     </Box>
