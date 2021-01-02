@@ -40,7 +40,12 @@ function Home() {
   return (
     <ResponsiveContext.Consumer>
       {(size) => (
-        <Box fill justify="center" align="center">
+        <Box
+          fill
+          justify="center"
+          align="center"
+          animation={{ type: "zoomIn", duration: 4000 }}
+        >
           <Card
             elevation="large"
             background="dark-1"
